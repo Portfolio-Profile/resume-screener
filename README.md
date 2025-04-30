@@ -2,61 +2,87 @@
 
 ## Overview
 
-The **Resume Screening Bot** is an AI-based tool designed to parse resumes, extract key information, and match candidates' skills, experience, and education to job descriptions. It uses natural language processing (NLP) and machine learning techniques to assist in resume screening.
+The **Resume Screening Bot** is an AI-assisted resume filtering tool built using Python and NLP techniques. It parses resumes, extracts important information, and allows filtering based on user-selected keywords (skills, education, or experience). It simplifies and speeds up the shortlisting process during hiring.
 
 ## Features
 
-- Extracts candidate name, position, skills, experience, and education from resumes.
-- Allows filtering resumes based on job description keywords (e.g., Python, Machine Learning, etc.).
-- Matches resumes with job descriptions and ranks them based on relevance.
-- Provides detailed insights on candidate skills, experience, and education.
+- Extracts candidate **name**, **position**, **skills**, **experience**, and **education** from resumes (PDF format).
+- Upload and screen **multiple resumes** at once.
+- Filter candidates by custom **keywords** under categories like skills, education, or experience.
+- Clear message displayed if no candidate matches.
+- Displays an overview of candidate experience and skills if no filter is applied.
+
+> **Note:** Matching against full job descriptions (ATS logic) is not implemented yet, but keyword-based filtering is available.
 
 ## Technologies Used
 
-- **Programming Language:** Python
-- **Libraries:** 
-  - `pyresparser` for resume parsing.
-  - `Streamlit` for UI.
-- **Artificial Intelligence (AI):** NLP (Natural Language Processing) for extracting text from resumes.
-- **ATS (Applicant Tracking System):** The bot matches resumes against job descriptions for better candidate screening.
- 
-## Installation
+- **Programming Language:** Python 3.10
+- **Libraries:**
+  - `pyresparser` – NLP-based resume parsing
+  - `pandas` – Data manipulation
+  - `python-docx` – Handles DOCX formats if needed
+  - `nltk` – Natural Language Toolkit used internally by pyresparser
+  - `Streamlit` – Web UI framework
+- **AI/NLP:** Used via pyresparser for structured data extraction
+- **Filtering:** Based on keyword matching for skills, education, or experience
 
-## 📦 Required Libraries
+## 📦 Installation
 
-Make sure you have Python **3.10** or higher installed. Use the following to install the dependencies:
-
-pip install -r requirements.txt
-pip install streamlit pyresparser pandas python-docx nltk
-python -m nltk.downloader all
-
-## Project Structure
-
-ResumeScreeningBot/
-│
-├── env/                          # Virtual environment (excluded via .gitignore)
-├── .gitignore
-├── README.md                     # Project guide
-├── requirements.txt              # Python dependencies
-│
-├── main.py                       # (Optional entry point, can be used for CLI tests)
-│
-├── modules/                      # Backend logic
-│   ├── __init__.py
-│   ├── parser.py                 # PDF parsing logic
-│   ├── matcher.py                # Filtering logic
-│   ├── experience_analyzer.py    # Experience extraction logic
-│   └── utils.py                  # Helper functions
-│
-└── streamlit_app/
-    └── streamlit_app.py          # Streamlit UI
-
-## ▶️ How to Run
-streamlit run streamlit_app/streamlit_app.py
-
-Follow these steps to run the Resume Screening Bot on your local machine:
+Make sure Python **3.10+** is installed.
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/Portfolio-Profile/resume-screener.git
+   cd resume-screener
+   ```
+
+2. Create a virtual environment (recommended):
+   ```bash
+   python -m venv env
+   env\Scripts\activate  # On Windows
+   # OR
+   source env/bin/activate  # On Mac/Linux
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   python -m nltk.downloader all
+   ```
+
+## 📁 Project Structure
+
+```
+ResumeScreeningBot/
+│
+├── env/                          # Virtual environment (excluded via .gitignore)
+├── .gitignore                    # Ignore rules
+├── README.md                     # Project guide
+├── requirements.txt              # Python dependencies
+│
+├── main.py                       # (Optional) CLI entry point
+│
+├── modules/                      # Backend logic
+│   ├── __init__.py
+│   ├── parser.py                 # Resume parsing logic
+│   ├── matcher.py                # Filtering logic
+│   ├── experience_analyzer.py    # Experience analyzer
+│   └── utils.py                  # Utility functions
+│
+└── streamlit_app/
+    └── streamlit_app.py          # Streamlit user interface
+```
+
+## ▶️ How to Run
+
+Run the Streamlit app:
+```bash
+streamlit run streamlit_app/streamlit_app.py
+```
+
+The UI will open in your default browser. You can now upload resumes and apply filters.
+
+## 🔗 Repository
+
+GitHub Repo: [https://github.com/Portfolio-Profile/resume-screener](https://github.com/Portfolio-Profile/resume-screener)
 
